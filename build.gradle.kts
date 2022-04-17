@@ -1,12 +1,10 @@
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-
 plugins {
     kotlin("jvm") version "1.6.20"
-    application
+    `maven-publish`
 }
 
-group = "io.github.spork"
-version = "0.1.0"
+group = "io.github.sp0rk"
+version = "0.1.1"
 
 repositories {
     mavenCentral()
@@ -21,6 +19,23 @@ tasks.test {
     useJUnitPlatform()
 }
 
-tasks.withType<KotlinCompile> {
-    kotlinOptions.jvmTarget = "1.8"
+tasks {
+    compileKotlin {
+        kotlinOptions.jvmTarget = "1.8"
+    }
+    compileTestKotlin {
+        kotlinOptions.jvmTarget = "1.8"
+    }
+}
+
+publishing {
+    publications {
+        create<MavenPublication>("maven") {
+            groupId = "io.github.sp0rk"
+            artifactId = "chaffinch-lib"
+            version = "0.1.1"
+
+            from(components["kotlin"])
+        }
+    }
 }
