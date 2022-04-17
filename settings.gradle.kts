@@ -1,0 +1,3 @@
+
+rootProject.name = "chaffinch-lib"
+
