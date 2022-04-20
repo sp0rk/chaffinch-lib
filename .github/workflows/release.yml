@@ -12,8 +12,8 @@ jobs:
         with:
           fetch-depth: '0'
       - name: Read version
-        run: cat ./buildSrc/src/main/java/Config.kt | grep lib | cut -d '"' -f 2 >> $VERSION
+        run: cat ./buildSrc/src/main/java/Config.kt | grep lib | cut -d '"' -f 2 | (echo -n version= && cat) >> $GITHUB_ENV
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
-          tag_name: $VERSION
+          tag_name: "${{ env.version }}"
