@@ -4,7 +4,7 @@ plugins {
 }
 
 group = "io.github.sp0rk"
-version = "0.1.1"
+version = Config.Versions.lib
 
 repositories {
     mavenCentral()
@@ -33,7 +33,7 @@ publishing {
         create<MavenPublication>("maven") {
             groupId = "io.github.sp0rk"
             artifactId = "chaffinch-lib"
-            version = "0.3.0"
+            version = Config.Versions.lib
 
             from(components["kotlin"])
         }
