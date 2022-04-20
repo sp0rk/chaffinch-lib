@@ -12,7 +12,7 @@ jobs:
         with:
           fetch-depth: '0'
       - name: Read version
-        run: cat ./buildSrc/src/main/java/Config.kt | grep lib | cut -d '"' -f 2 | (echo -n version= && cat) >> $GITHUB_ENV
+        run: cat ./buildSrc/src/main/java/Config.kt | grep 'const val lib =' | cut -d '"' -f 2 | (echo -n version= && cat) >> $GITHUB_ENV
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
