@@ -3,7 +3,7 @@ package io.github.sp0rk.chaffinch.lib.model
 import com.google.common.truth.Truth.assertThat
 import kotlin.test.Test
 
-internal class DeckTest {
+internal class ModelTest {
     private val bird = Bird("Black-capped chickadee", "https://example.com")
     private val deck = Deck("Garden", listOf(bird))
 
@@ -28,6 +28,7 @@ internal class DeckTest {
         val bird = deck.birds.firstOrNull()
 
         // then
-        assertThat(bird).isEqualTo(this.bird)
+        assertThat(bird?.name).isEqualTo("Black-capped chickadee")
+        assertThat(bird?.imageUrl).isEqualTo("https://example.com")
     }
 }
