@@ -1,6 +1,7 @@
 plugins {
     kotlin("jvm") version "1.6.20"
     `maven-publish`
+    jacoco
 }
 
 group = "io.github.sp0rk"
@@ -38,4 +39,46 @@ publishing {
             from(components["kotlin"])
         }
     }
+}
+
+tasks.test {
+    reports {
+        junitXml.required.set(true)
+        junitXml.isEnabled = true
+    }
+}
+
+jacoco {
+    toolVersion = "0.8.7"
+}
+tasks.withType<JacocoReport> {
+    reports {
+        xml.required.set(true)
+        xml.isEnabled = true
+        csv.required.set(true)
+        csv.isEnabled = true
+        html.required.set(true)
+        html.isEnabled = true
+    }
+
+    val excludes = listOf(
+        "**/*Test*.*",
+        "**/actions/*.*",
+        "**/core/*.*",
+        "**/markers/*.*",
+        "**/services/**/*.*",
+        "**/toolwindow/*.*",
+        "**/utils/*.*"
+    )
+
+    val javaClasses = fileTree("$buildDir/classes/java/main") { exclude(*excludes.toTypedArray()) }
+    val kotlinClasses = fileTree("$buildDir/classes/kotlin/main") { exclude(*excludes.toTypedArray()) }
+    classDirectories.from(javaClasses, kotlinClasses)
+    sourceDirectories.from(
+        "$project.projectDir/src/main/java",
+        "$project.projectDir/src/main/kotlin",
+        "$buildDir/generated/source/kapt/test"
+    )
+
+    executionData("${project.buildDir}/jacoco/test.exec")
 }
