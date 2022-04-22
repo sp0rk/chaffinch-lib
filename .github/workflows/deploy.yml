@@ -1,10 +1,25 @@
-name: Bump version
+name: Deploy
+
 on:
   push:
     branches:
       - main
+
 jobs:
-  release:
+  buildAndTest:
+    uses: sp0rk/chaffinch-lib/.github/workflows/buildAndTest.yml@main
+    with:
+      coverageBadge: true
+      coverageReport: false
+
+  ktlint:
+    uses: sp0rk/chaffinch-lib/.github/workflows/lint.yml@main
+    with:
+      failOnError: true
+      reporter: "github-check"
+
+  deploy:
+    needs: [buildAndTest, ktlint]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
