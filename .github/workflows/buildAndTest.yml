@@ -33,6 +33,7 @@ jobs:
           JITPACK_TOKEN: ${{secrets.jitpackToken}}
         with:
           arguments: build
+          cache-disabled: true
           gradle-version: 7.3.3
 
   reportTestResults:
@@ -59,6 +60,7 @@ jobs:
         uses: gradle/gradle-build-action@v2
         with:
           arguments: jacocoTestReport
+          cache-disabled: true
           gradle-version: 7.3.3
 
   coverageBadge:
