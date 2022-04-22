@@ -59,7 +59,7 @@ jobs:
       - name: Run Test Coverage
         uses: gradle/gradle-build-action@v2
         with:
-          arguments: jacocoTestReport
+          arguments: build jacocoTestReport
           cache-disabled: true
           gradle-version: 7.3.3
 
