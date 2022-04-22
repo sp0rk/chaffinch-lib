@@ -33,6 +33,7 @@ jobs:
           JITPACK_TOKEN: ${{secrets.jitpackToken}}
         with:
           arguments: build
+          gradle-version: 7.3.3
 
   reportTestResults:
     runs-on: ubuntu-latest
@@ -54,10 +55,14 @@ jobs:
         with:
           java-version: 1.8
 
+      - name: Validate Gradle wrapper
+        uses: gradle/wrapper-validation-action@v1
+
       - name: Run Test Coverage
         uses: gradle/gradle-build-action@v2
         with:
           arguments: jacocoTestReport
+          gradle-version: 7.3.3
 
   coverageBadge:
     runs-on: ubuntu-latest
