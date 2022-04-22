@@ -50,7 +50,9 @@ jobs:
     needs: build
     steps:
       - name: Run Test Coverage
-        run: ./gradlew jacocoTestReport
+        uses: gradle/gradle-build-action@v2
+        with:
+          arguments: jacocoTestReport
 
   coverageBadge:
     runs-on: ubuntu-latest
