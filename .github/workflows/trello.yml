@@ -6,7 +6,7 @@ on:
 
 jobs:
   attachCard:
-    uses: sp0rk/chaffinch-gha/trello.yml@main
+    uses: sp0rk/chaffinch-gha/.github/workflows/trello.yml@main
     secrets:
       TRELLO_KEY: ${{ secrets.TRELLO_KEY }}
       TRELLO_TOKEN: ${{ secrets.TRELLO_TOKEN }}

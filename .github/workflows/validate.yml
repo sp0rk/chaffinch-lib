@@ -6,7 +6,7 @@ on:
 
 jobs:
   buildAndTest:
-    uses: sp0rk/chaffinch-gha/buildAndTest.yml@main
+    uses: sp0rk/chaffinch-gha/.github/workflows/buildAndTest.yml@main
     secrets:
       jitPackToken: ""
     with:
@@ -14,7 +14,7 @@ jobs:
       coverageReport: true
 
   ktlint:
-    uses: sp0rk/chaffinch-gha/lint.yml@main
+    uses: sp0rk/chaffinch-gha/.github/workflows/lint.yml@main
     secrets:
       REVIEWDOG_TOKEN: ${{secrets.REVIEWDOG_TOKEN}}
     with:
