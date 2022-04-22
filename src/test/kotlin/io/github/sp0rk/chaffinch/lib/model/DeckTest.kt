@@ -1,7 +1,7 @@
 package io.github.sp0rk.chaffinch.lib.model
 
 import com.google.common.truth.Truth.assertThat
-import org.junit.jupiter.api.Test
+import kotlin.test.Test
 
 internal class DeckTest {
     @Test

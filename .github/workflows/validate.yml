@@ -13,6 +13,8 @@ jobs:
 
   ktlint:
     uses: sp0rk/chaffinch-lib/.github/workflows/lint.yml@main
+    secrets:
+      REVIEWDOG_TOKEN: ${{secrets.REVIEWDOG_TOKEN}}
     with:
       failOnError: true
       reporter: "github-pr-review"

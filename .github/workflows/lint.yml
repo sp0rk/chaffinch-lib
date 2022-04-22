@@ -2,6 +2,10 @@ name: Run Lint
 
 on:
   workflow_call:
+    secrets:
+      REVIEWDOG_TOKEN:
+        required: true
+        description: "Token for ReviewDog To report lint issues in PRs"
     inputs:
       failOnError:
         type: boolean
