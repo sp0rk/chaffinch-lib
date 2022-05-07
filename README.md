@@ -1,4 +1,6 @@
-# chaffinch-lib
+# Chaffinch commons library
+
+ <form action="https://jitpack.io/#sp0rk/chaffinch-lib/" method="get" target="_blank"><button type="submit">Jitpack page</button></form>
 
 ![Coverage](.github/badges/jacoco.svg)
 
