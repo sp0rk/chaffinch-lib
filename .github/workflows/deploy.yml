@@ -19,7 +19,15 @@ jobs:
     secrets:
       REVIEWDOG_TOKEN: ${{secrets.REVIEWDOG_TOKEN}}
     with:
-      failOnError: true
+      failOnError: false
+      reporter: "github-check"
+
+  actionLint:
+    uses: sp0rk/chaffinch-gha/.github/workflows/actionLint.yml@main
+    secrets:
+      REVIEWDOG_TOKEN: ${{secrets.REVIEWDOG_TOKEN}}
+    with:
+      failOnError: false
       reporter: "github-check"
 
   deploy:
