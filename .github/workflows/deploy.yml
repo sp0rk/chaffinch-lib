@@ -23,7 +23,7 @@ jobs:
       reporter: "github-check"
 
   actionLint:
-    uses: sp0rk/chaffinch-gha/actionLint.yml@main
+    uses: sp0rk/chaffinch-gha/.github/workflows/actionLint.yml@main
     secrets:
       REVIEWDOG_TOKEN: ${{secrets.REVIEWDOG_TOKEN}}
     with:
